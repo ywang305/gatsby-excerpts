@@ -10,7 +10,7 @@
 </p>
 
 ## 📦 Host on Gatsby Cloud
-<a href="https://excerpts.gtsb.io"> https://excerpts.gtsb.io </a>
+<a href="https://preview-excerpts.gtsb.io"> https://preview-excerpts.gtsb.io </a>
 
 
 
