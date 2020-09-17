@@ -3,10 +3,19 @@
   <a href="https://www.gatsbyjs.org">
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
   </a>
-</p>
-<h1 align="center">
+  
+  <h1 align="center">
   Gatsby built Books' Excerpts
 </h1>
+</p>
+
+## 📦 Host on Gatsby Cloud
+<a href="https://excerpts.gtsb.io"> https://excerpts.gtsb.io </a>
+
+
+
+
+
 
 ## 🚀 Quick start
 
