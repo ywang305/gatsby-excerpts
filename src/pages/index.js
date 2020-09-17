@@ -1,21 +1,53 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import Img from "gatsby-image"
+import { Flex, Box } from "theme-ui"
 
-const IndexPage = () => (
+export const query = graphql`
+  {
+    allSanityBook {
+      nodes {
+        title
+        image {
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+        note {
+          slug {
+            current
+          }
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+    <Flex sx={{ flexWrap: "wrap" }}>
+      {data.allSanityBook.nodes.map(book => (
+        <Box
+          key={book.title}
+          m={3}
+          sx={{
+            // flex: 1,
+            // maxWidth: "45%",
+            width: 200,
+          }}
+        >
+          <Link to={book.note.slug.current}>
+            <Img fluid={book.image.asset.fluid} alt={book.title} />
+          </Link>
+        </Box>
+      ))}
+    </Flex>
   </Layout>
 )
 
