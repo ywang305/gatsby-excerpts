@@ -6,26 +6,39 @@ import { Flex, Box, Heading, Text, Divider } from "theme-ui/src"
 
 export default function BookNote({ data }) {
   const { title, excerpts } = data.sanityNote
+  const captions = [...new Set(excerpts.map(e => e.caption))]
+  const keynotes = new Map()
+  excerpts.forEach(e => {
+    const { caption } = e
+    const arr = keynotes.has(caption) ? keynotes.get(caption) : []
+    arr.push(e)
+    keynotes.set(caption, arr)
+  })
+
   return (
     <Layout title={title}>
       <Flex>
         <Box sx={{ width: [0, "20%"], overflowX: "hidden" }} bg="tomato">
           <ul>
-            {excerpts.map(e => (
-              <a href={`#${e.caption}`}>
-                <li key={e.caption}>{e.caption}</li>
+            {captions.map(cap => (
+              <a href={`#${cap}`}>
+                <li key={cap}>{cap}</li>
               </a>
             ))}
           </ul>
         </Box>
         <Box p={2} sx={{ flex: 1 }}>
-          {excerpts.map(e => (
-            <Box key={e.caption} id={e.caption} py={2}>
-              <Heading>{e.caption} </Heading>
-              <Text>{e.keynote} </Text>
-              <Box>
-                <Img fluid={e.asset.fluid} alt={e.caption} />
-              </Box>
+          {captions.map(cap => (
+            <Box key={cap} id={cap} py={2}>
+              <Heading>{cap} </Heading>
+              {keynotes.get(cap).map(e => (
+                <>
+                  <Text>{e.keynote} </Text>
+                  <Box sx={{ maxWidth: 600 }} pb={4}>
+                    <Img fluid={e.asset.fluid} alt={e.keynote} />
+                  </Box>
+                </>
+              ))}
               <Divider />
             </Box>
           ))}

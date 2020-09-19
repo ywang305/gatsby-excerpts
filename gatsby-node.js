@@ -27,13 +27,15 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const sanityBooks = result.data.allSanityBook.nodes
   sanityBooks.forEach(book => {
-    const { current: note_slug } = book.note.slug
-    actions.createPage({
-      path: note_slug,
-      component: template,
-      context: {
-        slug: note_slug,
-      },
-    })
+    if (book.note.slug) {
+      const { current: note_slug } = book.note.slug
+      actions.createPage({
+        path: note_slug,
+        component: template,
+        context: {
+          slug: note_slug,
+        },
+      })
+    }
   })
 }
