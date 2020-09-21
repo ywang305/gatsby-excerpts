@@ -18,12 +18,12 @@ export default function BookNote({ data }) {
   return (
     <Layout title={title}>
       <Flex>
-        <Box sx={{ width: [0, "20%"], overflowX: "hidden" }} bg="tomato">
+        <Box sx={{ width: [0, "20%"] }} bg="secondary">
           <ul>
             {captions.map(cap => (
-              <a href={`#${cap}`}>
-                <li key={cap}>{cap}</li>
-              </a>
+              <li key={cap}>
+                <a href={`#${cap}`}>{cap}</a>
+              </li>
             ))}
           </ul>
         </Box>

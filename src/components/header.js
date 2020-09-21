@@ -20,10 +20,20 @@ const Header = ({ siteTitle }) => (
       to="/"
       sx={{
         variant: "styles.navlink",
-        p: 2,
+        fontSize: 5,
       }}
     >
       {siteTitle}
+    </Link>
+    <div sx={{ flex: 1 }} />
+
+    <Link
+      to="/notes"
+      sx={{
+        variant: "styles.navlink",
+      }}
+    >
+      Notes
     </Link>
   </header>
 )

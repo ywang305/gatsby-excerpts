@@ -7,7 +7,8 @@ export default {
     navlink: {
       color: `text`,
       textDecoration: `none`,
-      fontSize: 5,
+      fontSize: 3,
+      p: 2,
     },
   },
 }
