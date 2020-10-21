@@ -46,7 +46,7 @@ module.exports = {
         graphqlTag: "default",
         overlayDrafts: true,
         watchMode: true,
-        token: process.env.SANITY_READ_TOKEN,
+        token: process.env.SANITY_WRITE_TOKEN,
       },
     },
     {
